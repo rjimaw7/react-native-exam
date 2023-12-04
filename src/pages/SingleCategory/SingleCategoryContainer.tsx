@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import SingleCategoryView from './SingleCategoryView';
 import { useCategoriesService } from 'shared/service/categoriesService';
-import useGlobalStore from 'shared/zustand/categoryStore';
+import useGlobalStore from 'shared/zustand/globalStore';
 
 const SingleCategoryContainer = () => {
   // ALL STATE

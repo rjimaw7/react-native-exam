@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { View, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import useGlobalStore from 'shared/zustand/categoryStore';
+import useGlobalStore from 'shared/zustand/globalStore';
 import { NavigationProp, ParamListBase, useNavigation, useRoute } from '@react-navigation/native';
 
 const SearchInput = () => {

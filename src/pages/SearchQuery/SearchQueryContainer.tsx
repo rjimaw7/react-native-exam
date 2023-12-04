@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import SearchQueryView from './SearchQueryView';
-import useGlobalStore from 'shared/zustand/categoryStore';
+import useGlobalStore from 'shared/zustand/globalStore';
 import { useProductService } from 'shared/service/productService';
 
 const SearchQueryContainer = () => {

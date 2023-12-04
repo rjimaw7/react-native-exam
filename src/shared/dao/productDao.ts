@@ -1,6 +1,6 @@
 import { ENDPOINTS } from 'shared/constants/ENDPOINTS';
 import { useAxios } from 'shared/hooks/useAxios';
-import { ICategoryResponse } from 'shared/interfaces/ICategory';
+import { ICategory, ICategoryResponse } from 'shared/interfaces/ICategory';
 
 const { GET } = useAxios();
 
@@ -12,7 +12,15 @@ export const useProductDao = () => {
     return response.data;
   };
 
+  const getSingleProduct = async (product: string) => {
+    const response = await GET<ICategory>({
+      url: `${ENDPOINTS.PRODUCTS.SINGLE_PRODUCT}/${product}`,
+    });
+    return response.data;
+  };
+
   return {
     searchProduct,
+    getSingleProduct,
   };
 };

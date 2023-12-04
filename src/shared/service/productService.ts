@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { useProductDao } from 'shared/dao/productDao';
-import { ICategoryResponse } from 'shared/interfaces/ICategory';
+import { ICategory, ICategoryResponse } from 'shared/interfaces/ICategory';
 
-const { searchProduct: searchProductDao } = useProductDao();
+const { searchProduct: searchProductDao, getSingleProduct: getSingleProductDao } = useProductDao();
 
 export const useProductService = () => {
   const searchProduct = (query: string) => {
@@ -12,7 +12,15 @@ export const useProductService = () => {
     });
   };
 
+  const getSingleProduct = (product: string) => {
+    return useQuery<ICategory, Error>({
+      queryKey: ['single_product'],
+      queryFn: () => getSingleProductDao(product),
+    });
+  };
+
   return {
     searchProduct,
+    getSingleProduct,
   };
 };

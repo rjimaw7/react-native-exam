@@ -4,7 +4,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import useCategoryStore from 'shared/zustand/categoryStore';
+import useGlobalStore from 'shared/zustand/globalStore';
 import DisplayIcon from './DisplayIcon';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 
 const Category = ({ text }: Props) => {
   // ZUSTAND GLOBAL STORE
-  const { setSelectedCategory } = useCategoryStore();
+  const { setSelectedCategory } = useGlobalStore();
 
   // ALL HOOKS
   const navigation: NavigationProp<ParamListBase> = useNavigation();

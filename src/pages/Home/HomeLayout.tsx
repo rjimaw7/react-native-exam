@@ -5,7 +5,7 @@ import HomeContainer from './HomeContainer';
 
 const HomeLayout = () => {
   return (
-    <View className="h-full">
+    <View className="h-full bg-white">
       <View className="px-5 py-7">
         <SearchInput />
       </View>

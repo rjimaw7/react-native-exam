@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeLayout from 'pages/Home/HomeLayout';
 import SingleCategoryLayout from 'pages/SingleCategory/SingleCategoryLayout';
 import SearchQueryLayout from 'pages/SearchQuery/SearchQueryLayout';
+import SingleProductLayout from 'pages/SingleProduct/SingleProductLayout';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -58,6 +59,7 @@ const RouterView = () => {
       >
         <Stack.Screen name="Main" component={HomeTabs} />
         <Stack.Screen name="SingleCategory" component={SingleCategoryLayout} />
+        <Stack.Screen name="SingleProduct" component={SingleProductLayout} />
         <Stack.Screen name="SearchProduct" component={SearchQueryLayout} />
       </Stack.Navigator>
     </NavigationContainer>

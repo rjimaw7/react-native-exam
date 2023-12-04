@@ -7,7 +7,8 @@ export type BottomTabParamList = {
 };
 
 export type StackParamList = {
-  SingleCategory: { category: string } | undefined;
+  SingleCategory: undefined;
+  SingleProduct: undefined;
   SearchProduct: undefined;
   Main: undefined;
 };
