@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import React from 'react';
 import { ICategory } from 'shared/interfaces/ICategory';
@@ -29,6 +30,9 @@ const SingleCategoryItems = ({ item }: Props) => {
           }}
           style={{ width: 300, height: 300 }}
           resizeMode="stretch"
+          defaultSource={{
+            uri: 'https://placehold.co/300x300',
+          }}
         />
       </TouchableWithoutFeedback>
       <View className="flex gap-2">

@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { ICategory } from 'shared/interfaces/ICategory';
 import { AirbnbRating } from 'react-native-ratings';
+import SingleProductSkeleton from 'components/SingleProductSkeleton';
 
 interface Props {
   singleProductData: ICategory | undefined;
@@ -11,7 +11,9 @@ interface Props {
 }
 
 const SingleProductView = ({ singleProductData, singleProductDataFetching, singleProductDataLoading }: Props) => {
-  return (
+  return singleProductDataLoading || singleProductDataFetching ? (
+    <SingleProductSkeleton />
+  ) : (
     <View className="flex p-3 items-center gap-3">
       <Text className="font-bold text-2xl text-center">{singleProductData?.title}</Text>
       <Image
