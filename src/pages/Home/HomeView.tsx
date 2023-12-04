@@ -15,7 +15,9 @@ const HomeView = ({ categoryDataLoading, categoryDataMemo }: Props) => {
         <Text>Loading..</Text>
       ) : (
         <ScrollView className="mb-32">
-          {categoryDataMemo && categoryDataMemo.map((text, index) => <Category text={text} key={index} />)}
+          <View className="flex flex-row flex-wrap">
+            {categoryDataMemo && categoryDataMemo.map((text, index) => <Category text={text} key={index} />)}
+          </View>
         </ScrollView>
       )}
     </View>
