@@ -2,6 +2,7 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 import { ICategory } from 'shared/interfaces/ICategory';
 import SingleCategoryItems from './SingleCategoryItems';
+import SingleProductSkeleton from 'components/SingleProductSkeleton';
 
 interface Props {
   singleCategoryDataMemo: ICategory[] | undefined;
@@ -19,7 +20,11 @@ const SingleCategoryView = ({
   return (
     <View className="mt-2">
       {singleCategoryDataLoading || singleCategoryDataFetching ? (
-        <Text>Loading...</Text>
+        <View className="flex flex-row flex-wrap">
+          {Array.from({ length: 4 }, (_, index) => (
+            <SingleProductSkeleton key={index} />
+          ))}
+        </View>
       ) : (
         <View className="">
           <FlatList

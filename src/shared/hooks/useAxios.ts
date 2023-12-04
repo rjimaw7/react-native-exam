@@ -19,8 +19,32 @@ export const useAxios = () => {
     });
   };
 
+  const POST = async <R, P = unknown, B = unknown>(args: IAxios<P, B>): Promise<AxiosResponse<R>> => {
+    return instance({
+      ...args,
+      method: 'POST',
+    });
+  };
+
+  const PUT = async <P, B>(args: IAxios<P, B>): Promise<AxiosResponse> => {
+    return instance({
+      ...args,
+      method: 'PUT',
+    });
+  };
+
+  const DELETE = async <P, B>(args: IAxios<P, B>): Promise<AxiosResponse> => {
+    return instance({
+      ...args,
+      method: 'DELETE',
+    });
+  };
+
   return {
     GET,
     instance,
+    POST,
+    PUT,
+    DELETE,
   };
 };

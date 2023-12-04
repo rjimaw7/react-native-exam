@@ -6,5 +6,6 @@ export const ENDPOINTS = {
   PRODUCTS: {
     SEARCH: '/products/search',
     SINGLE_PRODUCT: '/products',
+    ADD: '/products/add',
   },
 };

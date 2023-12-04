@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 import { ICategory } from 'shared/interfaces/ICategory';
 import SingleCategoryItems from 'pages/SingleCategory/SingleCategoryItems';
+import SingleProductSkeleton from 'components/SingleProductSkeleton';
 
 interface Props {
   searchProductDataMemo: ICategory[] | undefined;
@@ -14,7 +15,7 @@ const SearchQueryView = ({ searchProductDataMemo, searchProductDataFetching, sea
   return (
     <View className="mt-2">
       {searchProductDataLoading || searchProductDataFetching ? (
-        <Text>Loading...</Text>
+        Array.from({ length: 4 }, (_, index) => <SingleProductSkeleton key={index} />)
       ) : searchProductDataMemo && searchProductDataMemo.length > 0 ? (
         <View className="">
           <FlatList

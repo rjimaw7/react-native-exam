@@ -1,8 +1,9 @@
 import { ENDPOINTS } from 'shared/constants/ENDPOINTS';
 import { useAxios } from 'shared/hooks/useAxios';
 import { ICategory, ICategoryResponse } from 'shared/interfaces/ICategory';
+import { IProductCreate, IProductCreateResponse } from 'shared/interfaces/ISettings';
 
-const { GET } = useAxios();
+const { GET, POST } = useAxios();
 
 export const useProductDao = () => {
   const searchProduct = async (query: string) => {
@@ -19,8 +20,20 @@ export const useProductDao = () => {
     return response.data;
   };
 
+  const createProduct = async (payload: IProductCreate) => {
+    const { description, name, price } = payload;
+
+    const response = await POST<IProductCreateResponse, any>({
+      url: ENDPOINTS.PRODUCTS.ADD,
+      data: { description, name, price },
+    });
+
+    return response.data;
+  };
+
   return {
     searchProduct,
     getSingleProduct,
+    createProduct,
   };
 };

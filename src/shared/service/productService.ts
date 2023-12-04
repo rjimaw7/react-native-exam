@@ -1,8 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useProductDao } from 'shared/dao/productDao';
 import { ICategory, ICategoryResponse } from 'shared/interfaces/ICategory';
+import { IProductCreate } from 'shared/interfaces/ISettings';
 
-const { searchProduct: searchProductDao, getSingleProduct: getSingleProductDao } = useProductDao();
+const {
+  searchProduct: searchProductDao,
+  getSingleProduct: getSingleProductDao,
+  createProduct: createProductDao,
+} = useProductDao();
 
 export const useProductService = () => {
   const searchProduct = (query: string) => {
@@ -19,8 +24,19 @@ export const useProductService = () => {
     });
   };
 
+  const createProduct = useMutation({
+    mutationFn: (payload: IProductCreate) => createProductDao(payload),
+  });
+
+  const createProductMutation = () => {
+    return {
+      createProduct,
+    };
+  };
+
   return {
     searchProduct,
     getSingleProduct,
+    createProductMutation,
   };
 };
