@@ -8,4 +8,8 @@ export const ENDPOINTS = {
     SINGLE_PRODUCT: '/products',
     ADD: '/products/add',
   },
+  USERS: {
+    ALL: '/users',
+    SEARCH_USER: '/users/search',
+  },
 };
