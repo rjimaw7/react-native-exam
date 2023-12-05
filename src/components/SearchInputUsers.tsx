@@ -1,28 +1,40 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { TextInput, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
+import useGlobalStore from 'shared/zustand/globalStore';
 
 const SearchInputUsers = () => {
+  // ALL STATE
+
+  // ZUSTAND
+  const { searchUser, setSearchUser, setPressedSearchUser } = useGlobalStore();
+
+  useEffect(() => {
+    if (!searchUser.length) {
+      setPressedSearchUser(false);
+    }
+  }, [searchUser]);
+
   return (
     <View className="border border-black flex flex-row justify-between px-3 py-2 rounded-md mt-4">
       <TextInput
         placeholder="Search Users"
         className="basis-3/4"
-        // value={searchQuery}
-        // onChangeText={(text) => setSearchQuery(text)}
+        value={searchUser}
+        onChangeText={(text) => setSearchUser(text)}
         returnKeyType="search"
-        // onSubmitEditing={(event) => {
-        //   setSearchQuery(event.nativeEvent.text.toLowerCase());
-        //   navigation.navigate('SearchProduct');
-        // }}
+        onSubmitEditing={(event) => {
+          setSearchUser(event.nativeEvent.text.toLowerCase());
+          setPressedSearchUser(true);
+        }}
       />
       <Feather
-        // onPress={() => {
-        //   if (searchQuery.length > 0) {
-        //     navigation.navigate('SearchProduct');
-        //   }
-        // }}
+        onPress={() => {
+          if (searchUser.length > 0) {
+            setPressedSearchUser(true);
+          }
+        }}
         name="search"
         size={24}
         color="black"
